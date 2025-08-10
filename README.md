@@ -11,6 +11,7 @@ This project demonstrates how to use the **KittenTTS** text-to-speech model to c
 ## Requirements
 Install the required Python packages:
 ```bash
+apt install espeak
 pip install KittenTTS
 ```
 
