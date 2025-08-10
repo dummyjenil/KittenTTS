@@ -17,4 +17,4 @@ class KittenTTS:
         self._session = ort.InferenceSession(model_path)
         
     def generate(self, text: str, voice: str = "expr-voice-2-m", speed: float = 1.0) -> np.ndarray:
-        return self._session.run(None, {"input_ids": np.array([[0] + [self._word_index_dictionary[c] for c in ' '.join(re.findall(r"\w+|[^\w\s]", self._phonemizer.phonemize([text])[0])) if c in self._word_index_dictionary] + [0]], dtype=np.int64),"style": self._voices[voice],"speed": np.array([speed], dtype=np.float32),})[0][5000:-10000]
+        return self._session.run(None, {"input_ids": np.array([[0] + [self._word_index_dictionary[c] for c in ' '.join(re.findall(r"\w+|[^\w\s]", self._phonemizer.phonemize([text])[0])) if c in self._word_index_dictionary] + [0]], dtype=np.int64),"style": self._voices[voice],"speed": np.array([speed], dtype=np.float32),})[0]
